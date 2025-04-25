@@ -22,4 +22,5 @@ def chunk_documents_with_overlap(query, db, top_k=2):
         for chunk in chunks:
             all_chunks.append(chunk)
     
+    #added comment
     return all_chunks
