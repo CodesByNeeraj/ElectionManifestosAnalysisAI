@@ -3,10 +3,8 @@ from langchain.vectorstores import Chroma #vector store from langchain where doc
 from langchain.embeddings import OpenAIEmbeddings #converts text into embeddings using openai's models
 import os
 import shutil 
-import json 
 from secret_key import secret_key
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
 
 def create_db():
     db_path = "db_new"
@@ -19,8 +17,10 @@ def create_db():
     # Load resumes and create new DB
     docs = load_full_resumes_from_pdfs("manifestos")
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=200)
+    #Breaks long texts into 1000-character chunks with 200 characters overlapping between chunks (to preserve context).
     docs_chunked = splitter.split_documents(docs)
     
+    #Uses OpenAI to convert each chunk of text into a numerical vector that captures semantic meaning.
     embedding = OpenAIEmbeddings(openai_api_key=secret_key)
     db = Chroma.from_documents(docs_chunked, embedding, persist_directory=db_path)
     db.persist()

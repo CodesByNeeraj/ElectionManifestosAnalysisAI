@@ -1,5 +1,4 @@
 from openai import OpenAI
-from chunkdocs import chunk_documents_with_overlap
 from langchain.vectorstores import Chroma
 from langchain.chat_models import ChatOpenAI #wrapper that lets you use chatgpt like models
 #A wrapper function is a function in a software library or a computer program whose main purpose is to call a second subroutine or a system call with little or no additional computation. 
@@ -13,12 +12,10 @@ def evaluate_manifestos_with_overlap(query, db,llm,top_k):
     # Chunk documents with overlap to retain context
     embedding = OpenAIEmbeddings(openai_api_key=secret_key)
     query_embedding = embedding.embed_query(query)
-    # Perform similarity search to retrieve the top relevant chunks
+    # Perform similarity search to retrieve the top relevant chunks to the query
     docs_with_metadata = db.similarity_search_by_vector(query_embedding, k=top_k)  # k is the number of chunks to retrieve
     top_chunks = "\n\n".join([doc.page_content for doc in docs_with_metadata])
 
-    #responses = []
-    #relevant_chunks = [result.page_content for result in results]  # Extract the most relevant chunks
     prompt = f"""
     Limit your response to exactly 5 sentences.
 

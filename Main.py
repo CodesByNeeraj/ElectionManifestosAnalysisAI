@@ -4,7 +4,6 @@ from evaluatemanifestos import evaluate_manifestos_with_overlap
 from createvectordatabase import create_db
 from langchain.chat_models import ChatOpenAI
 from secret_key import secret_key
-from chunkdocs import chunk_documents_with_overlap
 # Initialize OpenAI model
 llm = ChatOpenAI(openai_api_key=secret_key, temperature=0)
 
