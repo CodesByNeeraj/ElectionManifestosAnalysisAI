@@ -38,7 +38,7 @@ def main():
     llm = ChatOpenAI(openai_api_key=secret_key, temperature=0)
     
     # Process the query and evaluate manifestos by chunking
-    answer = evaluate_manifestos_with_overlap(query, db, llm)
+    answer = evaluate_manifestos_with_overlap(query, db, llm,3)
     st.write(answer)
    
 if __name__ == "__main__":

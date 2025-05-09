@@ -9,14 +9,16 @@ from openai import OpenAIError
 from langchain.embeddings import OpenAIEmbeddings
 from secret_key import secret_key
 
-def evaluate_manifestos_with_overlap(query, db,llm):
+def evaluate_manifestos_with_overlap(query, db,llm,top_k):
     # Chunk documents with overlap to retain context
-    #chunks = chunk_documents_with_overlap(query, db)
     embedding = OpenAIEmbeddings(openai_api_key=secret_key)
     query_embedding = embedding.embed_query(query)
-    results = db.similarity_search_by_vector(query_embedding)
-    responses = []
-    relevant_chunks = [result.page_content for result in results]  # Extract the most relevant chunks
+    # Perform similarity search to retrieve the top relevant chunks
+    docs_with_metadata = db.similarity_search_by_vector(query_embedding, k=top_k)  # k is the number of chunks to retrieve
+    top_chunks = "\n\n".join([doc.page_content for doc in docs_with_metadata])
+
+    #responses = []
+    #relevant_chunks = [result.page_content for result in results]  # Extract the most relevant chunks
     prompt = f"""
     Limit your response to exactly 5 sentences.
 
@@ -24,7 +26,7 @@ def evaluate_manifestos_with_overlap(query, db,llm):
     Answer based solely on the manifestos.
 
     Relevant Document Chunks:
-    {relevant_chunks}
+    {top_chunks}
 
     User Query:
     {query}

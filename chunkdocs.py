@@ -1,6 +1,5 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-
 def chunk_documents_with_overlap(query, db, top_k=2):
     #Perform similarity search to retrieve top-k documents related to the query
     docs_with_metadata = db.similarity_search(query, k=top_k)
