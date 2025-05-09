@@ -34,7 +34,7 @@ Open a terminal and run the following command to clone the repository to your lo
 
 ### cd "navigate to your preferred folder where you want to clone the project at"
 
-### git clone https://github.com/CodesByNeeraj/resumefilterusingAI.git](https://github.com/CodesByNeeraj/ElectionManifestosAnalysisAI.git
+### git clone https://github.com/CodesByNeeraj/resumefilterusingAI.git
 
 ## Run the setup.sh script
 The setup.sh script will install all necessary dependencies and set up the environment.
