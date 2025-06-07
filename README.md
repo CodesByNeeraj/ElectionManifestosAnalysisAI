@@ -1,6 +1,9 @@
 # GE2025 Singapore
 # ElectionsAI helps people ask questions about political party manifestos and get clear and short answers. 
 
+Tech Architecture, Images and Why RAG Agents Are Amazing!:
+https://www.canva.com/design/DAGpq9dCwQ0/wXY_RDCbd3JAUN6_52W0GQ/view?utm_content=DAGpq9dCwQ0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9fb95fdf1a 
+
 ## Why Use It?
 1. No need to read long, complicated manifestos.
 2. Saves time and makes it easier to compare what different parties are saying.
