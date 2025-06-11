@@ -49,6 +49,9 @@ Then, execute the script:
 
 ### ./setup.sh
 
+## You need to insert your own OPEN API key wherever you see "secret_key" being written. 
+## Dont forget to do this, else the app will not work.
+
 ## Run the Streamlit App
 After running the setup.sh script, you can launch the Streamlit app with the following command:
 
